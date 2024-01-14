@@ -1,3 +1,10 @@
+/**
+ * @file local_gs.h
+ * @brief local filesystem hepler
+ * @author JackyFan
+ */
+#pragma once
+
 #include <boost/filesystem.hpp>
 
 inline std::string GetCurrentPath(){

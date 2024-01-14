@@ -83,20 +83,26 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 #add_subdirectory(src)
 #aux_source_directory(. FILES)
-set(libs ${LEVELDB_LIB}
+find_library(YAMLCPP yaml-cpp)
+
+set(libs
+        ${LEVELDB_LIB}
         ${Boost_LIBRARIES}
         ${GTEST_LIBRARIES}
-        gflags
         ${PROTOBUF_LIBRARIES}
         ${OPENSSL_CRYPTO_LIBRARY}
         ${OPENSSL_SSL_LIBRARY}
+        yaml-cpp
+        gflags
         dl
         glog::glog
         ev)
 
+include_directories("${PROJECT_SOURCE_DIR}/src")
+
 file(GLOB SRCS "src/*.cc" "src/*.h")
 
-file(GLOB WORK_TESTS "test/*.cc" "test/*.h")
+file(GLOB WORK_TESTS "src/test/*.cc" "src/test/*.h")
 add_executable(test_main ${WORK_TESTS} ${SRCS})
 target_link_libraries(test_main ${libs})
 
