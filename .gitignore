@@ -2,3 +2,6 @@ build/
 cmake-build-debug/
 third/
 .idea/
+.vscode/
+bin/
+lib/
