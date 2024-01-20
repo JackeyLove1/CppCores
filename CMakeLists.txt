@@ -4,7 +4,7 @@ project("CppCores")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
-set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O2 -Wall")
 
 message("ProjectDir:${PROJECT_SOURCE_DIR}")
 message("ENV: '$ENV{CXXFLAGS}'")
@@ -24,7 +24,7 @@ include_directories(${LEVELDB_INCLUDE_PATH})
 #option(LEVELDB_BUILD_TESTS "Enable leveldb testing and parse tools" OFF)
 #add_subdirectory("third/leveldb")
 
-find_package(Boost 1.62.0 REQUIRED
+find_package(Boost 1.82.0 REQUIRED
         COMPONENTS system filesystem thread)
 
 
@@ -102,9 +102,9 @@ include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories("${PROJECT_SOURCE_DIR}/src/ds")
 # include_directories("${PROJECT_SOURCE_DIR}/src/utils")
 
-file(GLOB SRCS "src/*.cc" "src/*.h" "src/ds/*" "src/utils/*" )
+file(GLOB SRCS "src/*.cc" "src/*.h" "src/ds/*" "src/utils/*")
 
-file(GLOB WORK_TESTS "src/test/*.cc" "src/test/*.h" )
+file(GLOB WORK_TESTS "src/test/*.cc" "src/test/*.h")
 add_executable(test_main ${WORK_TESTS} ${SRCS})
 target_link_libraries(test_main ${libs})
 
