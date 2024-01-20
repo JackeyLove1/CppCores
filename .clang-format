@@ -1,0 +1,26 @@
+---
+Language:        Cpp
+BasedOnStyle:  Google
+DerivePointerAlignment: false
+PointerAlignment: Left
+IndentWidth: 4
+TabWidth: 4
+AccessModifierOffset: -4
+ColumnLimit: 100
+AllowShortFunctionsOnASingleLine: Empty
+AlignAfterOpenBracket: true
+AlignTrailingComments: true
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackParameters: false
+BinPackArguments: false
+IndentCaseLabels: false
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2
+SpacesInAngles:  false
+SpacesInContainerLiterals: true
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
