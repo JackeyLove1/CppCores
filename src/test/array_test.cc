@@ -2,7 +2,7 @@
 #include <random>
 #include <gtest/gtest.h>
 #include "utils/utils.h"
-#include "array.h"
+#include "ds/array.h"
 
 
 class ArrayTest : public ::testing::Test {
