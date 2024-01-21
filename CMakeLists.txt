@@ -80,9 +80,17 @@ include_directories(${Boost_INCLUDE_DIRS})
 #        absl::numeric
 #        absl::time)
 
+# JSON
+#find_library(JSONCPP_LIB jsoncpp)
+#include_directories(${JSONCPP_INCLUDE_DIR})
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(JSONCPP jsoncpp)
+link_libraries(${JSONCPP_LIBRARIES})
 
-#add_subdirectory(src)
-#aux_source_directory(. FILES)
+#zlib
+find_package(ZLIB REQUIRED)
+include_directories(${ZLIB_INCLUDE_DIRS})
+
 find_library(YAMLCPP yaml-cpp)
 
 set(libs
@@ -92,6 +100,8 @@ set(libs
         ${PROTOBUF_LIBRARIES}
         ${OPENSSL_CRYPTO_LIBRARY}
         ${OPENSSL_SSL_LIBRARY}
+        ${JSONCPP_LIBRARIES}
+        ${ZLIB_LIBRARIES}
         yaml-cpp
         gflags
         dl

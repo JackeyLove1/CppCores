@@ -10,6 +10,9 @@
 #include <cstring>
 #include <type_traits>
 
+#define LITTLE_ENDIAN 1
+#define BIG_ENDIAN 2
+
 #define LIKELY      __builtin_expect(!!(x), 1)
 #define UNLIKELY    __builtin_expect(!!(x), 0)
 
