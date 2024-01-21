@@ -27,7 +27,7 @@ ByteArray::ByteArray(size_t base_size)
           m_position{0},
           m_capacity{base_size},
           m_size{0},
-          m_endian{BIG_ENDIAN},
+          m_endian{NET_BIG_ENDIAN},
           m_root{new Node(base_size)},
           m_cur{m_root} {}
 

@@ -9,12 +9,16 @@
 #include <cstdlib>
 #include <cstring>
 #include <type_traits>
+#include <glog/logging.h>
 
-#define LITTLE_ENDIAN 1
-#define BIG_ENDIAN 2
+#define NET_LITTLE_ENDIAN 1
+#define NET_BIG_ENDIAN 2
 
 #define LIKELY      __builtin_expect(!!(x), 1)
 #define UNLIKELY    __builtin_expect(!!(x), 0)
+
+/// 断言宏封装
+
 
 #define CLASS_DELETE_FUNCTION(decl) decl = delete;
 

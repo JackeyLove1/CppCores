@@ -112,7 +112,7 @@ include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories("${PROJECT_SOURCE_DIR}/src/ds")
 # include_directories("${PROJECT_SOURCE_DIR}/src/utils")
 
-file(GLOB SRCS "src/*.cc" "src/*.h" "src/ds/*" "src/utils/*")
+file(GLOB SRCS "src/*.cc" "src/*.h" "src/ds/*" "src/utils/*" "src/concurrent/*" "src/coroutine")
 
 file(GLOB WORK_TESTS "src/test/*.cc" "src/test/*.h")
 add_executable(test_main ${WORK_TESTS} ${SRCS})

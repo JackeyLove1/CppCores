@@ -7,9 +7,9 @@
 
 class ArrayTest : public ::testing::Test {
 public:
-    void SetUp() {}
+    void SetUp() override {}
 
-    void TearDown() {}
+    void TearDown() override {}
 
 public:
     std::mt19937 gen{GetRandomEngine()};
