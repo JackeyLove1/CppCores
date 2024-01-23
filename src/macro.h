@@ -14,8 +14,8 @@
 #define NET_LITTLE_ENDIAN 1
 #define NET_BIG_ENDIAN 2
 
-#define LIKELY      __builtin_expect(!!(x), 1)
-#define UNLIKELY    __builtin_expect(!!(x), 0)
+#define LIKELY(x)      __builtin_expect(!!(x), 1)
+#define UNLIKELY(x)    __builtin_expect(!!(x), 0)
 
 /// 断言宏封装
 
