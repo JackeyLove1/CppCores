@@ -91,3 +91,5 @@ void data_from_hexstring(const char *hexstring, size_t length, void *output);
 std::string data_from_hexstring(const char *hexstring, size_t length);
 
 std::string data_from_hexstring(const std::string &data);
+
+//TODO(Jacky): add xxhash and CRC32
