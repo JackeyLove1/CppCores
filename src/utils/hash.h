@@ -92,4 +92,7 @@ std::string data_from_hexstring(const char *hexstring, size_t length);
 
 std::string data_from_hexstring(const std::string &data);
 
+
+uint32_t Hash(const char* data, size_t n, uint32_t seed);
+
 //TODO(Jacky): add xxhash and CRC32
