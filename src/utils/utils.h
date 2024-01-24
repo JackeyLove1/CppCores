@@ -29,6 +29,38 @@ static inline T GenRandom() {
     return distribution(DefaultGenerator);
 }
 
+static inline std::string GenerateUUID(){
+    std::uniform_int_distribution<int> dist(0, 15);
+    std::uniform_int_distribution<int> dist2(8, 11);
+
+    std::stringstream ss;
+    int i;
+    ss << std::hex;
+    for(i = 0; i < 8; i++) {
+        ss << dist(DefaultGenerator);
+    }
+    ss << "-";
+
+    for(i = 0; i < 4; i++) {
+        ss << dist(DefaultGenerator);
+    }
+    ss << "-4";
+    for(i = 0; i < 3; i++) {
+        ss << dist(DefaultGenerator);
+    }
+    ss << "-";
+    ss << dist2(DefaultGenerator);
+    for(i = 0; i < 3; i++) {
+        ss << dist(DefaultGenerator);
+    }
+    ss << "-";
+    for(i = 0; i < 12; i++) {
+        ss << dist(DefaultGenerator);
+    }
+
+    return ss.str();
+}
+
 /**
  * @brief 获取当前的调用栈
  * @param[out] bt 保存调用栈
