@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <memory>
+#include <numeric>
 #include "str_utils.h"
 #include "utils.h"
 
@@ -76,4 +79,65 @@ std::vector<std::string> split(const std::string &str, const char *delims, size_
     }
     result.push_back(str.substr(last));
     return result;
+}
+
+std::string toLower(const std::string &str) {
+    std::string result{str};
+    for (auto &&ch: result) {
+        ch = std::tolower(ch);
+    }
+    return result;
+}
+
+void toLower(std::string *str) {
+    std::transform(str->begin(), str->end(),
+                   str->begin(), [](unsigned char c) { return std::tolower(c); });
+}
+
+std::string toUpper(const std::string &str) {
+    std::string result{str};
+    for (auto &&ch: result) {
+        ch = std::toupper(ch);
+    }
+    return result;
+}
+
+void toUpper(std::string *str) {
+    std::transform(str->begin(), str->end(),
+                   str->begin(), [](unsigned char c) { return std::toupper(c); });
+}
+
+
+bool StartWithPrefix(const std::string& str, const std::string& prefix){
+    auto pos = str.find_first_of(prefix);
+    return pos == 0u;
+}
+
+
+bool EndWithSuffix(const std::string& str, const std::string& suffix){
+    if (suffix.size() > str.size())
+        return false;
+
+    size_t pos = str.rfind(suffix);
+    return pos != std::string::npos && pos == str.size() - suffix.size();
+}
+
+std::string RemovePrefix(const std::string& str, const std::string& prefix){
+    auto pos = str.find_first_of(prefix);
+    if (pos == 0u) {
+        return str.substr(prefix.size());
+    }
+    return str;
+}
+
+std::string RemoveSuffix(const std::string& str, const std::string& suffix) {
+    if (suffix.size() > str.size()) {
+        return str;
+    }
+
+    size_t pos = str.rfind(suffix);
+    if (pos != std::string::npos && pos == str.size() - suffix.size()) {
+        return str.substr(0, pos);
+    }
+    return str;
 }

@@ -18,3 +18,19 @@ std::string replace(const std::string &str, const std::string &find, const std::
 std::vector<std::string> split(const std::string &str, char delim, size_t max = ~0);
 
 std::vector<std::string> split(const std::string &str, const char *delims, size_t max = ~0);
+
+std::string toLower(const std::string& str);
+
+void toLower(std::string* str);
+
+std::string toUpper(const std::string& str);
+
+void toUpper(std::string* str);
+
+bool StartWithPrefix(const std::string& str, const std::string& prefix);
+
+bool EndWithSuffix(const std::string& str, const std::string& suffix);
+
+std::string RemovePrefix(const std::string& str, const std::string& prefix);
+
+std::string RemoveSuffix(const std::string& str, const std::string& suffix);

@@ -5,6 +5,8 @@
 #include <vector>
 #include <random>
 #include <type_traits>
+#include <sys/syscall.h>
+
 #include <glog/logging.h>
 
 static std::random_device DefaultRandomDevice{};
@@ -29,37 +31,42 @@ static inline T GenRandom() {
     return distribution(DefaultGenerator);
 }
 
-static inline std::string GenerateUUID(){
+static inline std::string GenerateUUID() {
     std::uniform_int_distribution<int> dist(0, 15);
     std::uniform_int_distribution<int> dist2(8, 11);
 
     std::stringstream ss;
     int i;
     ss << std::hex;
-    for(i = 0; i < 8; i++) {
+    for (i = 0; i < 8; i++) {
         ss << dist(DefaultGenerator);
     }
     ss << "-";
 
-    for(i = 0; i < 4; i++) {
+    for (i = 0; i < 4; i++) {
         ss << dist(DefaultGenerator);
     }
     ss << "-4";
-    for(i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         ss << dist(DefaultGenerator);
     }
     ss << "-";
     ss << dist2(DefaultGenerator);
-    for(i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         ss << dist(DefaultGenerator);
     }
     ss << "-";
-    for(i = 0; i < 12; i++) {
+    for (i = 0; i < 12; i++) {
         ss << dist(DefaultGenerator);
     }
 
     return ss.str();
 }
+
+inline static pid_t GetTID() {
+    return ::syscall(SYS_gettid);
+}
+
 
 /**
  * @brief 获取当前的调用栈
@@ -67,7 +74,7 @@ static inline std::string GenerateUUID(){
  * @param[in] size 最多返回层数
  * @param[in] skip 跳过栈顶的层数
  */
-void Backtrace(std::vector<std::string>& bt, int size = 64, int skip = 1);
+void Backtrace(std::vector<std::string> &bt, int size = 64, int skip = 1);
 
 /**
  * @brief 获取当前栈信息的字符串
@@ -75,4 +82,4 @@ void Backtrace(std::vector<std::string>& bt, int size = 64, int skip = 1);
  * @param[in] skip 跳过栈顶的层数
  * @param[in] prefix 栈信息前输出的内容
  */
-std::string BacktraceToString(int size = 64, int skip = 2, const std::string& prefix = "");
+std::string BacktraceToString(int size = 64, int skip = 2, const std::string &prefix = "");
