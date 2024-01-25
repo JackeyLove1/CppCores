@@ -1,7 +1,9 @@
 #pragma once
 
+#include <atomic>
+
 template<typename T>
-T Atomic(const T *ptr) {
+T AtomicGet(const T *ptr) {
     __sync_synchronize();
     return *ptr;
 }
@@ -91,6 +93,7 @@ template<typename T>
 bool AtomicCompareExchange(T *ptr, T compare, T exchange) {
     return __sync_bool_compare_and_swap(ptr, compare, exchange);
 }
+
 
 template<typename T>
 class AtomicPointer {

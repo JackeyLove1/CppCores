@@ -58,4 +58,5 @@ target_link_libraries(MyProject ${ZLIB_LIBRARIES})
 ## toft
 https://github.com/chen3feng/toft
 
-
+## leveldb
+https://github.com/google/leveldb
