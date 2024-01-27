@@ -17,3 +17,20 @@ public:
     virtual bool try_lock() noexcept = 0;
 
 };
+
+class SharedLock : public Lock {
+public:
+    SharedLock() = default;
+
+    virtual ~SharedLock() override = default;
+
+    SharedLock(const SharedLock &) = delete;
+
+    SharedLock &operator=(const SharedLock &) = delete;
+
+    virtual void lock_shared() noexcept = 0;
+
+    virtual void unlock_shared() noexcept = 0;
+
+    virtual bool try_lock_shared() noexcept = 0;
+};
