@@ -24,6 +24,14 @@ TEST(OptionalTest, BasicTest1) {
     auto c2 = create1(false);
     ASSERT_FALSE(c2.has_value());
     LOG(INFO) <<"create false, has_value: " << c2.has_value();
+    ASSERT_ANY_THROW(c2.value());
     ASSERT_EQ(c2.value_or(""), "");
 }
 
+TEST(OptionalTest, BasicTest2){
+    auto opt1 = std::make_optional<std::vector<char>>({'a', 'b', 'c'});
+    ASSERT_EQ(opt1.value().size(), 3u);
+
+    auto opt2 = std::make_optional(std::vector<int>(5, 0));
+    ASSERT_EQ(opt2.value().size(), 5u);
+}

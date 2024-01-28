@@ -1,0 +1,9 @@
+#pragma once
+
+#ifndef LOCKFREE_CACHE_COHERENT
+#define LOCKFREE_CACHE_COHERENT true
+#endif
+
+#ifndef LOCKFREE_CACHELINE_LENGTH
+#define LOCKFREE_CACHELINE_LENGTH 64U
+#endif
