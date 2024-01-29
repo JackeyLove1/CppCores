@@ -107,6 +107,16 @@ set(libs
         dl
         glog::glog
         ev)
+find_package(Protobuf REQUIRED)
+if(PROTOBUF_FOUND)
+    message (STATUS "protobuf found: ${PROTOBUF_VERSION}")
+else()
+    message (FATAL_ERROR "Cannot find Protobuf")
+endif()
+include_directories(${Protobuf_INCLUDE_DIRS})
+# Now we can use protobuf_generate
+# PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS HelloWorld.proto)
+message(STATUS "Protobuf_INCLUDE_DIRS: ${Protobuf_INCLUDE_DIRS}")
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories("${PROJECT_SOURCE_DIR}/src/ds")
