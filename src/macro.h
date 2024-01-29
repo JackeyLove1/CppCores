@@ -51,3 +51,12 @@ inline Dest bit_cast(Source const &source) {
     std::memcpy(&dest, &source, sizeof(dest));
     return dest;
 }
+
+#define ALLOW_UNUSED __attribute__((unused))
+
+#define NOINLINE __attribute__((noinline))
+
+#define FORCE_INLINE inline __attribute__((always_inline))
+
+#define ALIGNOF(type) __alignof__(type)
+
