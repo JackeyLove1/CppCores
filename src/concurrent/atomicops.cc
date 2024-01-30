@@ -12,3 +12,4 @@ inline Atomic32 NoBarrier_CompareAndSwap(volatile Atomic32 *ptr,
             : "memory");
     return prev;
 }
+

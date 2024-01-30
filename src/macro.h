@@ -60,3 +60,8 @@ inline Dest bit_cast(Source const &source) {
 
 #define ALIGNOF(type) __alignof__(type)
 
+#define CACHELINE_SIZE 64
+
+#define CACHELINE_ALIGNOF __attribute__((aligned(64)))
+
+# define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))

@@ -56,3 +56,23 @@ public:
     }
 
 };
+
+/*
+ * @brief simple futex wrapper
+ */
+class FastPthreadMutex : public Lock {
+private:
+    int lock_contended();
+
+    unsigned _futex;
+public:
+    FastPthreadMutex() : _futex(0) {}
+
+    ~FastPthreadMutex() {}
+
+    void lock() noexcept override;
+
+    void unlock() noexcept override;
+
+    bool try_lock() noexcept override;
+};
