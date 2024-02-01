@@ -41,3 +41,25 @@ TEST(MutextTest, MultiThreadTest){
 
     ASSERT_EQ(counter, COUNT * 10);
 }
+
+TEST(MutextTest, FastPthreadMutexTest){
+    constexpr int COUNT = 100000;
+    int counter = 0;
+    FastPthreadMutex lock;
+    auto threadFunc = [&lock, &counter, COUNT] {
+        for (int i = 0; i < COUNT; ++i) {
+            std::lock_guard guard(lock);
+            counter++;
+        }
+    };
+
+    std::vector<std::thread> threads;
+    for (size_t i = 0; i < 10; ++i) {
+        threads.emplace_back(threadFunc);
+    }
+    for (auto &&thread: threads) {
+        thread.join();
+    }
+
+    ASSERT_EQ(counter, COUNT * 10);
+}

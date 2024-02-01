@@ -16,15 +16,15 @@ static constexpr MutexInternal MUTEX_LOCKED_RAW = {{1}, {0}, 0};
 
 // Define as macros rather than constants which can't be put in read-only
 // section and affected by initialization-order fiasco.
-#define BTHREAD_MUTEX_CONTENDED (*(const unsigned*)&MUTEX_CONTENDED_RAW)
-#define BTHREAD_MUTEX_LOCKED (*(const unsigned*)&MUTEX_LOCKED_RAW)
+#define BTHREAD_MUTEX_CONTENDED (*(const unsigned*)&MUTEX_CONTENDED_RAW) // 257
+#define BTHREAD_MUTEX_LOCKED (*(const unsigned*)&MUTEX_LOCKED_RAW) // 1
 
 static_assert(sizeof(unsigned) == sizeof(MutexInternal), "sizeof_mutex_internal_must_equal_unsigned");
 
 int FastPthreadMutex::lock_contended() {
     std::atomic<unsigned> *whole = reinterpret_cast<std::atomic<unsigned> *>(&_futex);
-    while (whole->exchange(BTHREAD_MUTEX_CONTENDED) & BTHREAD_MUTEX_LOCKED) {
-        if (futex_wait_private(whole, BTHREAD_MUTEX_CONTENDED, NULL) < 0
+    while (whole->exchange(BTHREAD_MUTEX_CONTENDED) & BTHREAD_MUTEX_LOCKED) { // whole为0加锁成功
+        if (futex_wait_private(whole, BTHREAD_MUTEX_CONTENDED, nullptr) < 0
             && errno != EWOULDBLOCK) {
             return errno;
         }

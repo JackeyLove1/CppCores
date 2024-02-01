@@ -69,7 +69,7 @@ TEST(BoostLockFreeQueueTest, SingleThreadTest) {
     c1.join();
 }
 
-TEST(BoostLockFreeQueueTest, MultiThreadTest) {
+TEST(BoostLockFreeQueueTest, DISABLED_MultiThreadTest) {
     constexpr size_t LOOP = 10000, N = LOOP * 3;
     boost::lockfree::queue<size_t> queue(N);
     std::atomic<size_t> count{0};

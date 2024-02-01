@@ -19,7 +19,7 @@ TEST_F(TimeCostTest, BasicTest) {
     sleep(1);
     EXPECT_EQ(cost.ElapsedSec(), static_cast<int64_t>(1));
     cost.Reset();
-    SleepThread(1);
+    SleepInSec(1);
     EXPECT_EQ(cost.ElapsedSec(), static_cast<int64_t>(1));
 }
 

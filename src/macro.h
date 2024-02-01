@@ -65,3 +65,7 @@ inline Dest bit_cast(Source const &source) {
 #define CACHELINE_ALIGNOF __attribute__((aligned(64)))
 
 # define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+
+#define cpu_relax() asm volatile("pause\n": : :"memory")
+
+#define barrier() asm volatile("": : :"memory")

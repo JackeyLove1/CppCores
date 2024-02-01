@@ -43,6 +43,14 @@ private:
     decltype(GetCurrentTimeInNs()) start_{};
 };
 
-static inline void SleepThread(int64_t sec) {
+static inline void SleepInSec(int64_t sec) {
     std::this_thread::sleep_for(std::chrono::seconds(sec));
+}
+
+static inline void SleepInMs(int64_t ms) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+}
+
+static inline void SleepInUs(int64_t us) {
+    std::this_thread::sleep_for(std::chrono::microseconds(us));
 }
