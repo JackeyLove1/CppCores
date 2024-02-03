@@ -28,3 +28,25 @@ TEST(ListTest, BasicTest) {
     LOG(INFO) << "list2: " << list2;
     ASSERT_TRUE(std::equal(list2.begin(), list2.end(), list3.begin()));
 }
+
+TEST(HeapTest, BasicTest) {
+    std::vector<int> v{3, 1, 4, 1, 5, 9};
+    auto vector_to_string = [&v]() {
+        std::string result;
+        for (const auto &value: v) {
+            result += std::to_string(value) + " ";
+        }
+        return result;
+    };
+    LOG(INFO) << "Vec: " << vector_to_string();
+    std::make_heap(v.begin(), v.end());
+    LOG(INFO) << "Make Heap: " << vector_to_string();
+    v.push_back(6);
+    LOG(INFO) << "After push: " << vector_to_string();
+    std::push_heap(v.begin(), v.end());
+    LOG(INFO) << "After push heap: " << vector_to_string();
+    std::pop_heap(v.begin(), v.end());
+    LOG(INFO) << "after pop_heap:  " << vector_to_string();
+    int largest = v.back();
+    LOG(INFO) << "largest element: " << largest;
+}
