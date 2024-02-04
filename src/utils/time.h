@@ -39,6 +39,8 @@ public:
 
     void Reset() { start_ = GetCurrentTimeInNs(); }
 
+    auto Cost() const { return std::to_string(ElapsedMs()) + " ms"; }
+
 private:
     decltype(GetCurrentTimeInNs()) start_{};
 };

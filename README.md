@@ -54,7 +54,35 @@ add_executable(MyProject main.cpp)
 target_link_libraries(MyProject ${ZLIB_LIBRARIES})
 ```
 
+### openmp
+`reference: https://edu.itp.phys.ethz.ch/hs12/programming_techniques/openmpi.pdf`
+```shell
+wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.1.tar.gz
+tar -xvzf openmpi-5.0.1.tar.gz
+cd openmpi
+./configure --prefix=$HOME/opt/openmpi
+make all
+make install
+# echo "export PATH=\$PATH:\$HOME/opt/openmpi/bin" >> $HOME/.bashrc
+# echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/opt/openmpi/lib" >> $HOME/.bashrc
+-fopenmp
+```
+```cmake
+cmake_minimum_required(VERSION 3.1)
+project(your_project_name)
+
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+
+add_executable(your_target your_source_file.c)
+```
 # Reference
+## GPT-4
+
 ## toft
 https://github.com/chen3feng/toft
 
