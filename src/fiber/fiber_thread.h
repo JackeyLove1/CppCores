@@ -24,7 +24,7 @@ public:
 
     pid_t getId() const noexcept { return m_id; }
 
-    std::string_view getName() const noexcept { return m_name; }
+    [[nodiscard]] std::string_view getName() const noexcept { return m_name; }
 
     void join();
 
