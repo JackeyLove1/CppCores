@@ -37,7 +37,8 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # brpc static link
-#find_package(gflags REQUIRED)
+# gflags
+find_package(gflags REQUIRED)
 #include(FindThreads)
 #include(FindProtobuf)
 find_package(OpenSSL)
